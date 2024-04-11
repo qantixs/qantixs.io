@@ -4,7 +4,7 @@
     <title>QxUiMockup</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="hgL8_lqFGPMDk41ZOqxlGAc5k4_kNfszsHnptl4Zi-m3Cx0kMtNOrielY8De_s6isEiC9RHi5i8QLcKV6EZLow" />
+<meta name="csrf-token" content="ykzDY_2sSXQ2K7OKHXQK90vLia0fOPK63IdyE5OPw8FgU7tAOQkNC8vbKURHQ0xbZyyh2m7Q6b5XSmK4OBPI3A" />
     
 
     <link rel="stylesheet" href="/assets/application-12152dfa5e2ad317655684f5321298bcb3de0c133303b2f409ae10612ed8c205.css" data-turbo-track="reload" />
@@ -12,7 +12,23 @@
   </head>
 
   <body>
-    <div class="container" data-layout="container">
+     <script>
+    function submitForm() {
+      // Prevent default form submission
+      event.preventDefault();
+
+      // Get form values
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      // Perform any desired validation here
+
+      // Redirect to a new page
+      window.location.href = "mockup/index"
+    }
+  </script>
+
+<div class="container" data-layout="container">
   <div class="row flex-center min-vh-100 py-6">
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4"><a class="d-flex flex-center mb-4" href="../../../index.html">
         <img height="64" class="me-2" src="/assets/qantixs_logo_q6_lg-9dac2e66c56026ae136fe0e23115f7aca0719eb4a43be59cd9676ff1ab217344.png" />
@@ -25,16 +41,16 @@
             </div>
             <div class="col-auto fs-10 text-600"><span class="mb-0 undefined">or</span> <span><a href="../../../pages/authentication/simple/register.html">Create an account</a></span></div>
           </div>
-          <form>
-            <div class="mb-3"><input class="form-control" type="email" placeholder="Email address" /></div>
-            <div class="mb-3"><input class="form-control" type="password" placeholder="Password" /></div>
+          <form id="loginForm">
+            <div class="mb-3"><input id="email" class="form-control" type="email" placeholder="Email address" /></div>
+            <div class="mb-3"><input id="password" class="form-control" type="password" placeholder="Password" /></div>
             <div class="row flex-between-center">
               <div class="col-auto">
                 <div class="form-check mb-0"><input class="form-check-input" type="checkbox" id="basic-checkbox" checked="checked" /><label class="form-check-label mb-0" for="basic-checkbox">Remember me</label></div>
               </div>
               <div class="col-auto"><a class="fs-10" href="../../../pages/authentication/simple/forgot-password.html">Forgot Password?</a></div>
             </div>
-            <div class="mb-3"><button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Log in</button></div>
+            <div class="mb-3"><button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit" onclick="submitForm();">Log in</button></div>
           </form>
         </div>
       </div>
