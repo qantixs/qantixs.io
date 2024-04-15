@@ -4,7 +4,7 @@
     <title>qantixs</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="uBaP2zFhD8VTbf9AyLhi5o1Qg9B3YynmLikCIi6wOk1Z9XZvGzsuAbaLNJnYMozzYKojNFAaazZyPfWgodVZkg" />
+<meta name="csrf-token" content="8vIMefukKIJlLIjUDs0COICOh1u2C8zIndMuVkopO9PF3BDm-VtnteM5ziNsR7EYP5R4lBrszzNMBfF2A5dHTw" />
     
 
     <link rel="stylesheet" href="/assets/application-12152dfa5e2ad317655684f5321298bcb3de0c133303b2f409ae10612ed8c205.css" data-turbo-track="reload" />
@@ -26,11 +26,27 @@
       // Redirect to a new page
       window.location.href = "mockup/index"
     }
+
+    function createAccountForm() {
+      // Prevent default form submission
+      event.preventDefault();
+
+      // Redirect to a new pag
+      window.location.href = "create_user/index"
+    }
+
+    function forgotPasswordForm() {
+      // Prevent default form submission
+      event.preventDefault();
+
+      // Redirect to a new pag
+      window.location.href = "forgot_password/index"
+    }
   </script>
 
 <div class="container" data-layout="container">
   <div class="row flex-center min-vh-100 py-6">
-    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4"><a class="d-flex flex-center mb-4" href="../../../index.html">
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4"><a class="d-flex flex-center mb-4" href="https://qantixs.io">
         <img height="64" class="me-2" src="/assets/qantixs_logo_q6_lg-9dac2e66c56026ae136fe0e23115f7aca0719eb4a43be59cd9676ff1ab217344.png" />
         <span class="font-sans-serif text-primary fw-bolder fs-4 d-inline-block">qantixs</span></a>
       <div class="card">
@@ -54,11 +70,11 @@
               <div class="col-auto">
                 <div class="form-check mb-0"><input class="form-check-input" type="checkbox" id="basic-checkbox" checked="checked" /><label class="form-check-label mb-0" for="basic-checkbox">Remember me</label></div>
               </div>
-              <div class="col-auto"><a class="" href="../../../pages/authentication/simple/forgot-password.html">Forgot Password?</a></div>
+              <div class="col-auto"><a href="javascript:void(0);" onclick="forgotPasswordForm();">Forgot Password?</a></div>
             </div>
             <div class="mb-3"><button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit" onclick="submitForm();">Log in</button></div>
-            <div class="mb-3"><button class="btn btn-link d-block w-100 mt-3" type="submit" name="submit" onclick="createAccountForm();">Create an account</button></div>
           </form>
+          <div class="mb-3"><button class="btn btn-link d-block w-100 mt-3" type="submit" name="submit" onclick="createAccountForm();">Create an account</button></div>
         </div>
       </div>
     </div>
