@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+  <head>
+    <title>qantixs</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="kDBw7Fr4pnfRiCUY4Jt4A9ycnBUZ1kkKw9J6w_zoWUP8G_V3AXH4pk4AngaMyTd19wnrgsfB584-HDhVhQj5xA" />
+    
+
+    <link rel="stylesheet" href="/assets/application-12152dfa5e2ad317655684f5321298bcb3de0c133303b2f409ae10612ed8c205.css" data-turbo-track="reload" />
+    <script src="/assets/application-12e2281080475e1da9cab41c3b6567dc41ce9114dd77952af4ef680945ccd57b.js" data-turbo-track="reload" defer="defer"></script>
+
+    <style>
+      .qantixs-logo {
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+      }
+    </style>
+  </head>
+
+  <body style="height: 100%;">
+    <style>
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    background-color: white;
+    font-family: "Open Sans Light", sans-serif;
+  }
+
+  .qantixs-container {
+    display: block;
+    background-color: #f00;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .dragdrop-area {
+    display: block;
+    background-color: #ddd;
+    height: 90%;
+    /*height: 100%;*/
+
+    padding: 0px;
+    margin: 0px;
+    /*margin: auto;*/
+    width: 100%;
+    /*border: 3px solid green;*/
+    /*padding: 10px;*/
+  }
+
+  .db {
+    border: 3px solid #dd0;
+
+    .title {
+      background-color: #dd0;
+    }
+  }
+
+  .select {
+    border: 3px solid #0dd;
+    .title {
+      background-color: #0dd;
+    }
+  }
+
+  .math {
+    border: 3px solid #0d0;
+    .title {
+      background-color: #0d0;
+    }
+  }
+
+  .node {
+    z-index: 10;
+    background-color: #555;
+    width: 12rem;
+    height: 10rem;
+    margin: 1rem;
+    padding: 0px;
+    border-radius: 0.75em;
+    position: relative;
+    user-select: none;
+    touch-action: none;
+    .title {
+      padding: 3px;
+      color: white;
+    }
+
+    .body {
+      font-size: 10pt;
+      padding: 1px 0 0 10px;
+      color: white;
+    }
+
+    .row {
+      padding: 5px 0 0 7px;
+    }
+
+    .can-drop {
+      background-color: #fff;
+      border-color: #d00;
+    }
+
+    .connector {
+      z-index: 5;
+      width: 12px;
+      height: 12px;
+      /* display: block; */
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      position: absolute;
+      /* border: 2px solid #fff; */
+      left: -9px;
+      top: 50px;
+    }
+
+    .connection {
+      z-index: -1;
+      width: 0px;
+      height: 0px;
+      /* display: block; */
+      position: relative;
+      left: 0px;
+      top: 0px;
+    }
+
+    .connector_input_0 {
+      z-index: 5;
+      width: 22px;
+      height: 22px;
+      /* display: block; */
+      -moz-border-radius: 11px;
+      -webkit-border-radius: 11px;
+      border-radius: 11px;
+      position: absolute;
+      /* border: 2px solid #fff; */
+      left: -11px;
+      top: 50px;
+    }
+
+    .container_output_0 {
+      z-index: 5;
+      width: 22px;
+      height: 22px;
+      background-color: #d00;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+    border-radius: 11px;
+    position: absolute;
+    right: -11px;
+    top: 50px;
+    padding: 0px;
+    margin: 0px;
+    }
+
+    .connector_output_0 {
+      z-index: 11;
+      width: 22px;
+      height: 22px;
+      background-color: #d00;
+      border: 2px solid #fff;
+      position: absolute;
+      -moz-border-radius: 11px;
+      -webkit-border-radius: 11px;
+      border-radius: 11px;
+    }
+  }
+
+  .dragdrop-canvas {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    box-sizing: border-box;
+    background: #aaa;
+    user-select: none;
+    touch-action: none;
+  }
+
+  #outer-dropzone {
+  }
+
+  #inner-dropzone {
+  }
+
+  .dropzone {
+    background-color: #d00;
+    border: solid 2px #fff;
+    transition: background-color 0.3s;
+  }
+
+  .drop-active {
+    border-style: solid;
+  }
+
+  .drop-target {
+  }
+
+  .drag-drop {
+    /* width: 12px; */
+    /* height: 12px; */
+    /* border-radius: 6px; */
+    /* /* background-color: #29e; */ */
+    /* border: solid 2px #fff; */
+    /**/
+    /* touch-action: none; */
+    /* //transform: translate(0px, 0px); */
+    /**/
+    transition: background-color 0.3s;
+  }
+</style>
+
+<script>
+  //const uuidv4 = require("uuid/v4");
+
+  class Node {
+    constructor(type) {
+      this.type = type;
+      console.log('ctor node');
+    }
+  }
+
+  class Connector {
+    constructor() {
+      console.log('ctor connector');
+      this.start = { x: 0, y: 0 }
+      this.end = { x: 0, y: 0 }
+    }
+  }
+
+  function createNode(type) {
+    console.log('createNode:', type);
+    var conn = new Connector;
+    // TODO: used proper uuid library
+    var uid = Math.floor(Math.random() * 10000000);
+    //console.dir(conn);
+
+    var node = document.createElement('div');
+    node.className = 'node ' + type;
+    node.id = uid;
+    var title = document.createElement('div');
+    title.className = 'title';
+    title.textContent = type;
+    node.appendChild(title);
+    var body = document.createElement('div');
+    body.className = 'body';
+    node.appendChild(body);
+
+    if ( type == "db" ) {
+      var row0 = document.createElement('div');
+      row0.className = 'row';
+      row0.textContent = 'Type: postgresql';
+      body.appendChild(row0);
+
+      var row1 = document.createElement('div');
+      row1.className = 'row';
+      row1.textContent = 'Source: dbserver:3021';
+      body.appendChild(row1);
+    }
+
+    if ( type != "db" ) {
+      var ci0 = document.createElement('div');
+      ci0.className = 'connector_input_0 dropzone';
+      //ci0.id = "outer-dropzone"
+      node.style.top = '-160px';
+      node.style.left = '500px';
+      node.appendChild(ci0);
+    }
+
+    var ct0 = document.createElement('div');
+    ct0.className = 'container_output_0';
+    //console.dir(ct0);
+    node.appendChild(ct0);
+
+    var co0 = document.createElement('div');
+    co0.className = 'connector_output_0 drag-drop';
+    co0.id = "yes-drop"
+    // console.dir(co0);
+    ct0.appendChild(co0);
+
+
+    var cn0 = document.createElement('canvas');
+    cn0.className = 'connection';
+    // console.dir(co0);
+    ct0.appendChild(cn0);
+
+    document.getElementsByClassName('dragdrop-area')[0].appendChild(node);
+
+    return uid;
+  }
+
+  function saveNodeLayout() {
+    console.log('saveNodeLayout');
+  }
+
+  function connectNodes(uid_from, idx_from, uid_to, idx_to) {
+    console.log("connectNodes", uid_from, idx_from, "->", uid_to, idx_to);
+  }
+
+  function drawConnection() {
+    console.log('drawConnection');
+
+    var ctx = document.getElementsByClassName('connection')[0].getContext('2d')
+    ctx.beginPath();
+    // TODO: use animation and do not clear evertime?
+    ctx.clearRect(0, 0, document.getElementsByClassName('connection')[0].width, document.getElementsByClassName('connection')[0].height);
+    ctx.moveTo(0, 0);
+    var fx = parseFloat(document.getElementsByClassName('connection')[0].width);
+    var fy = parseFloat(document.getElementsByClassName('connection')[0].height);
+
+    //ctx.lineTo(parseFloat(event.target.dataset.sx) + parseFloat(event.target.dataset.px), parseFloat(event.target.dataset.sy) + parseFloat(event.target.dataset.py));
+    //ctx.lineTo(fx, fy);
+    ctx.bezierCurveTo(75.0, 0, fx - 75.0, fy, fx, fy);
+    ctx.stroke();
+  }
+
+
+  function dropHandler(evt) {
+    console.log('dropHandler');
+    evt.preventDefault();
+  }
+
+  function dragoverHandler(evt) {
+    console.log('dragoverHandler');
+    evt.preventDefault();
+  }
+
+  function dragstartHandler(evt) {
+    console.log('dragstartHandler');
+  }
+</script>
+<script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+<script>
+  interact('.node').draggable({
+    listeners: {
+      start (event) {
+        console.log(event.type, event.target);
+        console.log("node start 3", event.type, event.target, event);
+        console.log("node start 2", event.type, event.target, event.target.className);
+      },
+      end (event) {
+        console.log(event.type, event.target);
+      },
+      move (event) {
+        if (event.target.dataset.px == null || event.target.dataset.py == null) {
+          event.target.dataset.px = "0";
+          event.target.dataset.py = "0";
+        }
+
+        //console.dir(event.target.dataset);
+        event.target.dataset.px = parseFloat(event.target.dataset.px) + parseFloat(event.dx);
+        event.target.dataset.py = parseFloat(event.target.dataset.py) + parseFloat(event.dy);
+        event.target.style.transform = `translate(${event.target.dataset.px}px, ${event.target.dataset.py}px)`;
+      },
+    }
+  })
+
+  interact('.connector_output_0').draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'self',
+        endOnly: true
+      })
+    ],
+    autoScroll: true,
+    listeners: {
+      start (event) {
+        console.log("connector_output_0 start", event.type, event.target, event.target.className, event.target);
+        //event.target.style.zIndex = 20;
+        //event.target.style.z_index = 20;
+
+      },
+      end (event) {
+        console.log(event.type, event.target, "dropvalid", event.target.dataset.dropvalid);
+        //event.target.style.zIndex = 40;
+        //event.target.z_index = 1;
+      },
+      move (event) {
+
+        if (event.target.dataset.px == null || event.target.dataset.py == null) {
+          event.target.dataset.px = 0;
+          event.target.dataset.py = 0;
+
+          var corec = document.getElementsByClassName('container_output_0')[0].getBoundingClientRect();
+          var darec = document.getElementsByClassName('dragdrop-area')[0].getBoundingClientRect();
+
+          event.target.dataset.sx = corec.x - darec.x + corec.width / 2;
+          // TODO: -48 is a hack for the menu offset the bootstrap must be generating.
+          // convert coords local to global or global to local
+          event.target.dataset.sy = corec.y - darec.y + corec.height / 2 - 48;
+
+          console.log('init sx', event.target.dataset.sx, 'sy', event.target.dataset.sy,
+            'px', event.target.dataset.px, 'py', event.target.dataset.py);
+          console.dir(corec);
+        }
+
+        //console.dir(event.target.dataset);
+        event.target.dataset.px = parseFloat(event.target.dataset.px) + event.dx;
+        event.target.dataset.py = parseFloat(event.target.dataset.py) + event.dy;
+        event.target.style.transform = `translate(${event.target.dataset.px}px, ${event.target.dataset.py}px)`;
+
+        //console.log('prdx', event.target.parentNode.dx, 'prdy', event.target.parentNode.dy);
+        //event.target.parentNode.style.background = '#fff';
+
+        //console.log('sx', event.target.dataset.sx, 'sy', event.target.dataset.sy, 'px', event.target.dataset.py, 'py', event.target.dataset.py);
+        // TODO: change getElementsByClassName to getElementById since it is O(1)
+        var fx = parseFloat(event.target.dataset.sx) + parseFloat(event.target.dataset.px);
+        var fy = parseFloat(event.target.dataset.sy) + parseFloat(event.target.dataset.py);
+
+        var corec = document.getElementsByClassName('container_output_0')[0].getBoundingClientRect();
+        var cnx = document.getElementsByClassName('connection')[0];
+        cnx.width = event.target.dataset.px;
+        cnx.height = event.target.dataset.py;
+        cnx.style.left = corec.width / 2 + "px";
+        cnx.style.top = corec.height / 2 + "px";
+        cnx.style.width = event.target.dataset.px + "px";
+        cnx.style.height = event.target.dataset.py + "px";
+        console.log(event.target.dataset.sx, event.target.dataset.sy, fx, fy)
+        drawConnection();
+      },
+    }
+  })
+
+
+  function resizeCanvases () {
+    [].forEach.call(document.querySelectorAll('.dragdrop-canvas'), function (canvas) {
+      delete canvas.width
+      delete canvas.height
+
+      var rect = canvas.getBoundingClientRect()
+      console.log('canvas rect', rect);
+
+      canvas.width = rect.width
+      canvas.height = rect.height
+    })
+  }
+
+  resizeCanvases();
+
+  // interact.js can also add DOM event listeners
+  interact(window).on('resize', resizeCanvases);
+  window.onload = function() { resizeCanvases() };
+
+</script>
+<script>
+  interact('.dropzone').dropzone({
+    // only accept elements matching this CSS selector
+    //accept: '#yes-drop',
+    // Require a 75% element overlap for a drop to be possible
+    //overlap: 0.05,
+
+    // listen for drop related events:
+
+    ondropactivate: function (event) {
+      // add active dropzone feedback
+      console.log('drop-active')
+      event.target.classList.add('drop-active')
+    },
+    ondragenter: function (event) {
+      console.log('dragenter')
+      var draggableElement = event.relatedTarget;
+      var dropzoneElement = event.target;
+
+      // HACK
+      document.getElementsByClassName('connector_input_0')[0].classList.add('drop-target');
+      // feedback the possibility of a drop
+      dropzoneElement.classList.add('drop-target');
+      dropzoneElement.classList.add('can-drop');
+      //draggableElement.classList.add('can-drop');
+      console.log(dropzoneElement);
+      //draggableElement.textContent = 'Dragged in'
+    },
+    ondragleave: function (event) {
+      // remove the drop feedback style
+      console.log('dragleave')
+      event.target.classList.remove('drop-target')
+      event.target.classList.remove('can-drop')
+      event.relatedTarget.classList.remove('can-drop')
+      //event.relatedTarget.textContent = 'Dragged out'
+      var draggableElement = event.relatedTarget;
+      console.log(draggableElement);
+    },
+    ondrop: function (event) {
+      console.log('dropped')
+      //event.relatedTarget.textContent = 'Dropped'
+
+    },
+    ondropdeactivate: function (event) {
+      console.log('dropped deactivate')
+      // remove active dropzone feedback
+      event.target.classList.remove('drop-active')
+      event.target.classList.remove('drop-target')
+    },
+    checker: function (
+      dragEvent,         // related dragmove or dragend
+      event,             // Touch, Pointer or Mouse Event
+      dropped,           // bool default checker result
+      dropzone,          // dropzone Interactable
+      dropzoneElement,   // dropzone element
+      draggable,         // draggable Interactable
+      draggableElement   // draggable element
+    ) {
+      console.log('checker', dropped);
+      draggableElement.dataset.dropvalid = dropped;
+      return dropped;
+    }
+  })
+
+</script>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img height="32" src="/assets/qantixs_logo_q6_lg-9dac2e66c56026ae136fe0e23115f7aca0719eb4a43be59cd9676ff1ab217344.png" />
+    </a>
+    <a class="navbar-brand" href="/">
+      <div class='qantixs-logo'>qantixs</div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Projects
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">New</a></li>
+            <li><a class="dropdown-item" href="#">Open</a></li>
+            <li><a class="dropdown-item" href="#">Save</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Properties</a></li>
+          </ul>
+        </li>
+        <ul>
+    </div>
+  </div>
+</nav>
+
+<div class="dragdrop-area" style='height: 48px; display: float; padding: 5px;'>
+  <button class='btn btn-secondary' onclick='createNode("db");'>Create DB Node</button>
+  <button class='btn btn-secondary' onclick='createNode("select");'>Create SELECT Node</button>
+  <button class='btn btn-secondary' onclick='createNode("math");'>Create MATH Node</button>
+  <button class='btn btn-secondary' onclick='saveNodeLayout();'>Save Node Layout</button>
+  <button class='btn btn-secondary' onclick='drawConnection();'>Draw Connection</button>
+</div>
+
+<div class='qantixs-container' style='display: flex; background-color: #ddd;' ondrop='dropHandler(event)' ondragover='dragoverHandler(event)'>
+  <div class='' style='min-height: 94vh;'>
+
+    <canvas class="dragdrop-canvas">
+
+    </canvas>
+  </div>
+</div>
+
+<script>
+
+</script>
+
+  </body>
+</html>
